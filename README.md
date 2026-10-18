@@ -6,6 +6,8 @@
 
 ## GitHub Pages
 
+公司名称字体基于 Adobe 思源宋体 SemiBold，已内嵌首页。字符子集、来源说明和 OFL 许可保存在 `fonts/`。
+
 仓库 Settings → Pages → Build and deployment：
 
 - Source: Deploy from a branch

@@ -2,6 +2,8 @@
 
 现有网站的 GitHub Pages 静态发布目录。`index.html` 与原项目入口逐字节一致，包含现有样式、交互、图片、425 条产品记录及原产品目录 PDF。
 
+网站主打天成蛋液与聚朗馅料，目录及系列筛选优先展示这两个系列，其他原料提供配套选择。公开网址：https://zhehao-wang-ui.github.io/-/ 。
+
 ## GitHub Pages
 
 仓库 Settings → Pages → Build and deployment：

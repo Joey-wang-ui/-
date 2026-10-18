@@ -611,7 +611,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       <div class="culture-grid"><article><span>01 / 愿景</span><p>满足和引导客户的健康与营养需求，成为员工幸福、客户感动、基业长青的人本企业。</p></article><article><span>02 / 使命</span><p>通过企业经营活动培养让人放心、受人尊重的优秀人才。</p></article><article><span>03 / 价值观</span><p class="values">快乐 · 奋斗<br>协作 · 共赢</p></article></div>
     </section>
     <section class="contact-section section-wrap" id="contact" aria-labelledby="contact-title">
-      <div class="contact-panel"><div><p class="eyebrow">LET’S MAKE SOMETHING GOOD</p><h2 id="contact-title">下一份好味道，<br>从一次<span class="serif">交谈开始。</span></h2><p>告诉我们您需要的产品、规格与数量，<br>让我们一起找到适合的原料。</p><a class="contact-source" href="https://mp.weixin.qq.com/s/S0SUZuHkSSIG4it-BFx_ow" target="_blank" rel="noopener noreferrer">访问公司公众号介绍 <span>↗</span></a></div><div class="contact-details"><div><span>公司</span><strong data-company>杭州嘉惠食品有限公司</strong></div><div><span>联系电话</span><strong id="company-phone"><a href="tel:15267029133">15267029133</a></strong></div><div><span>微信</span><strong id="company-wechat">请电话咨询</strong></div><div><span>地址</span><strong id="company-address">浙江省杭州市临平区崇贤街道星海南路188-9（3楼）</strong></div><p class="contact-pending">微信资料待补充，欢迎先通过电话咨询。</p></div></div>
+      <div class="contact-panel"><div><p class="eyebrow">LET’S MAKE SOMETHING GOOD</p><h2 id="contact-title">下一份好味道，<br>从一次<span class="serif">交谈开始。</span></h2><p>告诉我们您需要的产品、规格与数量，<br>让我们一起找到适合的原料。</p><a class="contact-source" href="https://mp.weixin.qq.com/s/S0SUZuHkSSIG4it-BFx_ow" target="_blank" rel="noopener noreferrer">访问公司公众号介绍 <span>↗</span></a></div><div class="contact-details"><div><span>公司</span><strong data-company>杭州嘉惠食品有限公司</strong></div><div><span>联系电话</span><strong id="company-phone"><a href="tel:15267029133">15267029133</a></strong></div><div><span>微信</span><strong id="company-wechat">请电话咨询</strong></div><div><span>地址</span><strong id="company-address">浙江省杭州市临平区崇贤街道星海南路188-9（3楼）</strong></div></div></div>
     </section>
   </main>
   <footer class="section-wrap"><span data-company>杭州嘉惠食品有限公司</span><span>公司介绍 · 产品展示 · 联系咨询</span><a href="#home">返回顶部 ↑</a></footer>
@@ -7995,11 +7995,6 @@ if (company.phone) {
 } else phoneNode.textContent = "待补充";
 document.querySelector("#company-wechat").textContent = company.wechat || "请电话咨询";
 document.querySelector("#company-address").textContent = company.address || "待补充";
-const missingContacts = [["联系电话", company.phone], ["微信", company.wechat], ["详细地址", company.address]]
-  .filter(([, value]) => !value).map(([label]) => label);
-const contactNote = document.querySelector(".contact-pending");
-contactNote.hidden = missingContacts.length === 0;
-contactNote.textContent = `${missingContacts.join("、")}资料待补充。${company.phone ? "欢迎先通过电话咨询。" : ""}`;
 
 for (const section of displaySections) {
   const option = element("option", "", `${section.name}（${section.count}）`);

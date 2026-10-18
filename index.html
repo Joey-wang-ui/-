@@ -441,7 +441,7 @@ dialog.is-closing::backdrop { animation: backdrop-exit 180ms ease-in both; }
 .pointer-effects *, .pointer-effects *::before { pointer-events: none; }
 .pointer-effects-glow, .pointer-effects-ring { position: absolute; top: 0; left: 0; width: 0; height: 0; will-change: transform; }
 .pointer-effects-glow::before { content: ""; position: absolute; left: -95px; top: -95px; width: 190px; height: 190px; border-radius: 50%; background: radial-gradient(circle, #af7e3b12, #d2b87608 40%, transparent 70%); }
-.pointer-effects-glow::after { content: ""; position: absolute; left: -2.5px; top: -2.5px; width: 5px; height: 5px; border-radius: 50%; background: #af7e3b; box-shadow: 0 0 0 1px #f8f5eedd; }
+.pointer-effects-glow::after { content: ""; position: absolute; left: -8px; top: -8px; width: 16px; height: 16px; border-radius: 50%; background: radial-gradient(circle, #dfbd7bcc 0%, #cfaa6680 22%, #b9934d30 48%, transparent 75%); filter: blur(1px); }
 .pointer-effects-ring::before { content: ""; position: absolute; left: -14px; top: -14px; width: 28px; height: 28px; border: 1px solid #af7e3b80; border-radius: 50%; background: #e9ddba0a; transition: transform 280ms var(--ease-out), border-color 280ms, background-color 280ms; }
 .pointer-effects.is-interactive .pointer-effects-ring::before { transform: scale(1.65); border-color: #af7e3bb3; background: #e9ddba16; }
 .pointer-effects.is-pressed .pointer-effects-ring::before { transform: scale(.8); }

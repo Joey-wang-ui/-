@@ -55,9 +55,12 @@ h1, .featured-title { font-family: "Songti SC", "Noto Serif CJK SC", SimSun, ser
 .serif { color: var(--gold); font-family: "Songti SC", "Noto Serif CJK SC", SimSun, serif; font-weight: 500; }
 .hero-description { color: var(--muted); font-size: 15px; line-height: 2.2; }
 .hero-actions { display: flex; align-items: center; gap: 31px; margin-top: 32px; }
+.hero-actions.home-actions { flex-wrap: wrap; gap: 16px; }
 .button { display: inline-flex; justify-content: space-between; align-items: center; gap: 28px; font-size: 14px; padding: 17px 23px; border-radius: 3px; transition: background .2s, transform .2s; }
 .button-green { color: #fffef8; background: var(--ink); }
 .button-green:hover { background: #45634c; transform: translateY(-2px); }
+.button-outline { color: var(--ink); background: transparent; box-shadow: inset 0 0 0 1px var(--ink); }
+.button-outline:hover { background: #e9ecdf; transform: translateY(-2px); }
 .text-link { font-size: 14px; }
 .text-link span { margin-left: 15px; }
 .hero-note { margin-top: 42px; color: var(--muted); font-size: 12px; letter-spacing: 1px; display: flex; align-items: center; gap: 15px; }
@@ -550,7 +553,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <p class="eyebrow"><span></span> 好味道，从好原料开始</p>
         <h1><span class="hero-title-line">好原料，</span><span class="hero-title-line">成就<span class="serif">好味道。</span></span></h1>
         <p class="hero-description">从一捧面粉，到满室麦香。<br>嘉惠食品为您汇集烘焙所需的原料与灵感，<br class="desktop-break">与每一位用心制作美味的人，一起向前。</p>
-        <div class="hero-actions"><a class="button button-green" href="#products">浏览产品目录 <span aria-hidden="true">↗</span></a><a class="text-link" href="#about">了解公司 <span aria-hidden="true">→</span></a></div>
+        <div class="hero-actions home-actions"><a class="button button-green" href="#featured-products">查看主打产品 <span aria-hidden="true">↗</span></a><a class="button button-outline" href="#catalog-search">搜索产品目录 <span aria-hidden="true">↗</span></a></div>
         <div class="hero-note"><span aria-hidden="true">EST. 2017</span> 专注食品原料代理销售</div>
       </div>
       <div class="hero-art">

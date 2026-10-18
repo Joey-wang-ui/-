@@ -441,10 +441,14 @@ dialog.is-closing::backdrop { animation: backdrop-exit 180ms ease-in both; }
 .pointer-effects *, .pointer-effects *::before { pointer-events: none; }
 .pointer-effects-glow, .pointer-effects-ring { position: absolute; top: 0; left: 0; width: 0; height: 0; will-change: transform; }
 .pointer-effects-glow::before { content: ""; position: absolute; left: -95px; top: -95px; width: 190px; height: 190px; border-radius: 50%; background: radial-gradient(circle, #af7e3b12, #d2b87608 40%, transparent 70%); }
+.pointer-effects-glow::after { content: ""; position: absolute; left: -2.5px; top: -2.5px; width: 5px; height: 5px; border-radius: 50%; background: #af7e3b; box-shadow: 0 0 0 1px #f8f5eedd; }
 .pointer-effects-ring::before { content: ""; position: absolute; left: -14px; top: -14px; width: 28px; height: 28px; border: 1px solid #af7e3b80; border-radius: 50%; background: #e9ddba0a; transition: transform 280ms var(--ease-out), border-color 280ms, background-color 280ms; }
 .pointer-effects.is-interactive .pointer-effects-ring::before { transform: scale(1.65); border-color: #af7e3bb3; background: #e9ddba16; }
 .pointer-effects.is-pressed .pointer-effects-ring::before { transform: scale(.8); }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) and (forced-colors: none) {
+  html.custom-pointer-active, html.custom-pointer-active * { cursor: none !important; }
+  html.custom-pointer-active input, html.custom-pointer-active textarea, html.custom-pointer-active [contenteditable] { cursor: text !important; }
+  html.custom-pointer-active select, html.custom-pointer-active dialog, html.custom-pointer-active dialog * { cursor: auto !important; }
   .pointer-effects.is-visible { display: block; opacity: 1; }
   .button::after, .hero-photo-frame::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 400ms ease; }
   .button::after { background: radial-gradient(110px circle at var(--spot-x, 50%) var(--spot-y, 50%), #e9ddba33, transparent 75%); }
@@ -8309,7 +8313,7 @@ window.addEventListener("resize", updateReadingProgress, { passive: true });
 initializeMotion();
 updateReadingProgress();
 
-// Decorative mouse feedback keeps the native cursor and never intercepts clicks.
+// The custom cursor never intercepts clicks and restores the native cursor when inactive.
 function initializePointerEffects() {
   const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
   const forcedColors = window.matchMedia("(forced-colors: active)");
@@ -8324,6 +8328,7 @@ function initializePointerEffects() {
 
   function hidePointer() {
     visible = false;
+    document.documentElement.classList.remove("custom-pointer-active");
     if (frame) cancelAnimationFrame(frame);
     frame = 0;
     previousTime = 0;
@@ -8357,6 +8362,8 @@ function initializePointerEffects() {
     ringY += (targetY - ringY) * ease;
     glow.style.transform = `translate3d(${targetX}px, ${targetY}px, 0)`;
     ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+    // Hide the system cursor only after its replacement has been painted.
+    document.documentElement.classList.add("custom-pointer-active");
     if (spotlight?.isConnected) {
       const bounds = spotlight.getBoundingClientRect();
       spotlight.style.setProperty("--spot-x", `${targetX - bounds.left}px`);
@@ -8394,6 +8401,7 @@ function initializePointerEffects() {
   document.documentElement.addEventListener("pointerleave", hidePointer, { passive: true });
   document.addEventListener("keydown", hidePointer);
   window.addEventListener("blur", hidePointer);
+  dialog.addEventListener("beforetoggle", hidePointer);
   window.addEventListener("scroll", hidePointer, { passive: true });
   document.addEventListener("visibilitychange", syncPointerSetting);
   for (const preference of [finePointer, forcedColors, motionPreference]) {

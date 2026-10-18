@@ -10,6 +10,8 @@
 
 公司名称字体基于 Adobe 思源宋体 SemiBold，已内嵌首页。字符子集、来源说明和 OFL 许可保存在 `fonts/`。
 
+品牌栏支持柔光、放大及选中高亮，点击品牌可直接筛选产品并跳到目录，支持键盘和手机操作。
+
 仓库 Settings → Pages → Build and deployment：
 
 - Source: Deploy from a branch
